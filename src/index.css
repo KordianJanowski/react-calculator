@@ -20,3 +20,7 @@ code {
 body {
   @apply font-nunito box-border;
 }
+
+.direction-rtl {
+  direction: rtl;
+}

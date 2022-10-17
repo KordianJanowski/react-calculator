@@ -3,9 +3,9 @@ import { buttonTypes, specialOperationTypes } from "../types/enums"
 
 export const buttons:Ibutton[] = [
   {
-    text: "%",
+    text: "x!",
     type: buttonTypes.SPECIAL_OPERATION,
-    desc: specialOperationTypes.PERCENT
+    desc: specialOperationTypes.FACTORIAL
   },
   {
     text: "CE",

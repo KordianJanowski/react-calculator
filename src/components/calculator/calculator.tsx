@@ -11,7 +11,7 @@ const Calculator: React.FC = () => {
       <button
         key={button.text}
         onClick={() => handleClick(button)}
-        className="w-20 h-20 mx-3 flex items-center justify-center hover:bg-neutral-700 rounded-md transition-all"
+        className="flex items-center justify-center w-20 h-20 mx-3 transition-all rounded-md hover:bg-neutral-700"
       >
         <span className={`
           ${button.type === buttonTypes.NUMBER ? 'text-neutral-300 font-semibold text-lg' : 'text-[#D03997]'}
@@ -26,15 +26,17 @@ const Calculator: React.FC = () => {
   })
 
   return (
-    <div className='bg-[#373737] shadow-lg h-[745px] rounded-lg flex flex-col justify-end items-end scale-100'>
+    <div className='bg-[#373737] xl:scale-[77.5%] 2xl:scale-100 h-[745px] max-w-xl rounded-lg flex flex-col justify-end items-end scale-100'>
       <div className='mx-4 my-2 text-[#D03997] font-semibold'>
         Złoty kalkulator
       </div>
-      <div className='h-full flex flex-col justify-end items-end px-4 pb-5'>
+      <div className='flex flex-col items-end justify-end h-full max-w-full px-4 pb-5 overflow-hidden'>
         <span className='text-xl font-semibold text-neutral-400'>{log || ''}</span>
-        <span className='text-6xl font-semibold text-white'>{operation ? operation : '0'}</span>
+        <div className='max-w-full'>
+          <span className='text-6xl font-semibold text-white'>{operation ? operation : '0'}</span>
+        </div>
       </div>
-      <div className='w-full grid grid-cols-4 mb-3'>
+      <div className='grid w-full grid-cols-4 mb-3 place-items-center'>
         {buttonsMap}
       </div>
     </div>

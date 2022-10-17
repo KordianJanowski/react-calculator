@@ -1,7 +1,7 @@
 import { Ibutton } from "../../types/interfaces";
 import { useState, useEffect } from 'react'
 import { buttonTypes, specialOperationTypes } from "../../types/enums";
-import { getReplacedOperation } from "../../utils/helpers";
+import { getFactorial, getReplacedOperation } from "../../utils/helpers";
 
 const useCalculator = () => {
   const [operation, setOperation] = useState<string>('')
@@ -36,7 +36,6 @@ const useCalculator = () => {
           if(isDisplayingResult || log === '') return
           const replacedOperation = getReplacedOperation(`${log} ${(operation || 0)}`)
 
-          console.log(replacedOperation)
           setOperation(eval(replacedOperation))
           setLog(`${log}
                   ${ operation.charAt(0) !== '-'
@@ -59,19 +58,30 @@ const useCalculator = () => {
           setOperation(operation => (-operation).toString())
           break;
         case buttonTypes.DOT:
+          if(operation.includes('.')) return
+          setOperation(operation => operation + ".")
           break;
         }
       } else {
+        console.log(operation)
+        if(operation === '' || operation === '.') return
         switch(button.desc) {
           case specialOperationTypes.DIVIDE:
-          break;
+            setOperation(eval(`1 / ${operation}`))
+            setLog(`1 ÷ ${operation} =`)
+            break;
           case specialOperationTypes.POWER:
-          break;
+            setOperation(Math.pow(parseFloat(operation), 2).toString())
+            setLog(`${operation}² =`)
+            break;
           case specialOperationTypes.SQUARE:
-          break;
-          case specialOperationTypes.PERCENT:
-          break;
-
+            setOperation((Math.sqrt(parseFloat(operation))).toString())
+            setLog(`²√${operation} =`)
+            break;
+          case specialOperationTypes.FACTORIAL:
+            setOperation(getFactorial(parseFloat(operation)).toString())
+            setLog(`${operation}! =`)
+            break;
       }
     }
   }
