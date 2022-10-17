@@ -11,8 +11,8 @@ export enum buttonTypes {
 }
 
 export enum specialOperationTypes {
-  PERCENT,
   DIVIDE,
   POWER,
-  SQUARE
+  SQUARE,
+  FACTORIAL,
 }
