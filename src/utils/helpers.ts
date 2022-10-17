@@ -1,4 +1,4 @@
-export const getReplacedOperation = (operation:string) => {
+export const getReplacedCharsOperation = (operation:string) => {
   return operation.replaceAll('÷', '/').replaceAll('×', '*').replaceAll('–', '-')
 }
 
