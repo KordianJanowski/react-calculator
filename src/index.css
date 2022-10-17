@@ -18,5 +18,5 @@ code {
 }
 
 body {
-  @apply font-nunito;
+  @apply font-nunito box-border;
 }
